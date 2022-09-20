@@ -14,6 +14,17 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  */
 public class Fibonacci {
 
+	static int[] fib = new int[100];
+	
+	static int[] fibFiller() {
+		fib[0] = 1;
+		fib[1] = 1;
+		
+		for(int i = 2; i < fib.length; i++){
+			fib[i] = fib[i - 1] + fib[i - 2];
+		}
+		return fib;
+	}
     /**
      * Calculates the value in the Fibonacci sequence at a given index. For example,
      * `atIndex(0)` and `atIndex(1)` should return `1`, because the first two elements of the
@@ -24,7 +35,12 @@ public class Fibonacci {
      * @throws IllegalArgumentException if the given index is less than zero
      */
     public static int atIndex(int i) throws IllegalArgumentException {
-        throw new NotImplementedException();
+        
+    	if(i < 0){
+        	throw new IllegalArgumentException();
+        }
+    	
+    	return fibFiller()[i];
     }
 
     /**
@@ -38,7 +54,18 @@ public class Fibonacci {
      *                                  given end is less than the given start
      */
     public static int[] slice(int start, int end) throws IllegalArgumentException {
-        throw new NotImplementedException();
+        
+    	if(start < 0 || end < 0 || end < start){
+        	throw new IllegalArgumentException();
+        }
+    	
+    	int[] slicedFib = new int[end-start];
+
+    	for(int i = start, si = 0; i < end; i++, si++){
+    		slicedFib[si] = fibFiller()[i];
+    	}
+    	
+    	return slicedFib;
     }
 
     /**
@@ -49,6 +76,18 @@ public class Fibonacci {
      * @throws IllegalArgumentException if the given count is negative
      */
     public static int[] fibonacci(int count) throws IllegalArgumentException {
-        throw new NotImplementedException();
+        
+    	if(count < 0){
+        	throw new IllegalArgumentException();
+        }
+    	
+    	//int[] fetchedFib = fibFiller();
+    	int[] limitedFib = new int[count];
+    	
+    	for(int i = 0; i < count; i++){
+    		limitedFib[i] = fibFiller()[i];
+    	}
+    	
+    	return limitedFib;
     }
 }
