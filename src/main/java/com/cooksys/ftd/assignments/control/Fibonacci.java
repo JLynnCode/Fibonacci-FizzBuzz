@@ -1,7 +1,5 @@
 package com.cooksys.ftd.assignments.control;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 /**
  * The Fibonacci sequence is simply and recursively defined: the first two elements are `1`, and
  * every other element is equal to the sum of its two preceding elements. For example:
@@ -81,7 +79,6 @@ public class Fibonacci {
         	throw new IllegalArgumentException();
         }
     	
-    	//int[] fetchedFib = fibFiller();
     	int[] limitedFib = new int[count];
     	
     	for(int i = 0; i < count; i++){

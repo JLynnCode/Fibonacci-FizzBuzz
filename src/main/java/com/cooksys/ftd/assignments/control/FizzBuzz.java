@@ -1,6 +1,6 @@
 package com.cooksys.ftd.assignments.control;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import java.util.*;
 
 /**
  * FizzBuzz is an old programming exercise.
@@ -26,7 +26,14 @@ public class FizzBuzz {
      * @throws IllegalArgumentException if b is zero
      */
     public static boolean divides(int a, int b) throws IllegalArgumentException {
-        throw new NotImplementedException();
+        
+    	if(b == 0){ throw new IllegalArgumentException(); }
+        
+        if(a % b == 0){
+        	return true;
+        }else{
+        	return false;
+        }
     }
 
     /**
@@ -41,7 +48,16 @@ public class FizzBuzz {
      * @return a message according to the format above, or null if n is not divisible by either 3 or 5
      */
     public static String message(int n) {
-        throw new NotImplementedException();
+       
+    	if(n % 3 == 0 && n % 5 == 0){
+    	   return "15: FizzBuzz";
+       }else if(n % 3 == 0){
+    	   return "3: Fizz";
+       }else if(n % 5 == 0){
+    	   return "5: Buzz";
+       }else{
+    	   return null;
+       }
     }
 
     /**
@@ -55,7 +71,28 @@ public class FizzBuzz {
      * @throws IllegalArgumentException if the given end is less than the given start
      */
     public static String[] messages(int start, int end) throws IllegalArgumentException {
-        throw new NotImplementedException();
+        
+    	if(end < start){
+    		throw new IllegalArgumentException();
+    	}
+    	
+    	ArrayList<String> messageList = new ArrayList<String>();
+    	
+    	for(int i = start; i < end; i++){
+    		
+        	if(i % 3 == 0 && i % 5 == 0){
+         	   messageList.add(i + ": FizzBuzz");
+            }else if(i % 3 == 0){
+         	   messageList.add(i + ": Fizz");
+            }else if(i % 5 == 0){
+         	   messageList.add(i + ": Buzz");
+            }else{
+         	   messageList.add(null);
+            }
+    	}
+    	messageList.removeAll(Collections.singleton(null));
+    	
+    	return messageList.toArray(new String[messageList.size()]);
     }
 
     /**
@@ -63,7 +100,18 @@ public class FizzBuzz {
      * the relevant messages to sysout
      */
     public static void main(String[] args) {
-        throw new NotImplementedException();
+        
+    	for(int i = 1; i <= 115; i++){
+    		
+    		if(i % 3 == 0 && i % 5 == 0){
+    			System.out.println(i +": FizzBuzz");
+    		}else if(i % 3 == 0){
+    			System.out.println(i +": Fizz");
+    		}else if(i % 5 == 0){
+    			System.out.println(i +": Buzz");
+    		}else{
+    			System.out.println(i +": null");
+    		}
+    	}
     }
-
 }
